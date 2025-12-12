@@ -134,7 +134,7 @@ export default function DemoForm() {
               {/* Terms and Conditions */}
               <div className="pt-2">
                 <p className="text-xs sm:text-sm text-gray-600 mb-3">
-                  By clicking "Get in Touch" I agree to the{' '}
+                  By clicking {`"Get in Touch"`} I agree to the{' '}
                   <a href="/terms" className="text-[#7440FA] hover:underline">
                     Terms of Use
                   </a>

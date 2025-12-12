@@ -106,7 +106,7 @@ export default function PromotionalCard() {
         {/* Footnotes Section - White Background */}
         <div className="bg-white py-6 px-4 sm:px-6 lg:px-8 rounded-b-2xl">
           <p className="text-gray-700 text-xs sm:text-sm mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-            Cognera: "The Product Benchmark Report" (2025). Figures cited are from products in the 90th percentile of performance.
+            Cognera: {`"The Product Benchmark Report"`} (2025). Figures cited are from products in the 90th percentile of performance.
           </p>
           <p className="text-gray-700 text-xs sm:text-sm" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
             The Total Economic Impact™ of Cognera, a commissioned study conducted by Forrester Consulting on behalf of Cognera, August 2023.

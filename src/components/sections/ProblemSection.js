@@ -28,7 +28,7 @@ export default function ProblemSection() {
         
         <div className="mb-6">
           <h3 className="text-xl sm:text-2xl text-white mb-4 font-semibold" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-            Today's challenges:
+            {`Today's challenges:`}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {challenges.map((challenge, index) => (

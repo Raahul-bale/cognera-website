@@ -156,7 +156,7 @@ export default function ContactPage() {
               Talk to a product analytics expert
             </h2>
             <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
-              Want to see a custom demo or get help finding the right plan? We'd love to chat.
+              Want to see a custom demo or get help finding the right plan? {`We'd love to chat.`}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -331,7 +331,7 @@ export default function ContactPage() {
 
             <div>
               <h3 className="text-lg sm:text-xl font-semibold mb-6 text-white">
-                Trusted by the world's leading companies
+                {`Trusted by the world's leading companies`}
               </h3>
               <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-8">
                 {trustedCompanies.map((company, index) => (
