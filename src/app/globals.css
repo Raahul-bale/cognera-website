@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #080707;
+  color: white;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* DM Serif Text Font Classes */
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-text-regular-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Roboto Font for headings and paragraphs */
+h1, h2, h3, h4, h5, h6, p {
+  font-family: "Roboto", sans-serif;
+}
+
+.cta-primary-button {
+  background-color: #3399CC;
+}
+
+.cta-primary-button:hover {
+  background-color: #7440FA;
+}
+
+/* Matrix Background Grid Styles */
+.matrix-grid-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.matrix-grid-item {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #080707;
+  border-radius: 0;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: none;
+  position: relative;
+  pointer-events: auto;
+}
+
+.matrix-grid-item:hover {
+  background-color: white !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  z-index: 1;
+  position: relative;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .matrix-grid-item {
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .matrix-grid-container {
+    /* Ensure consistent appearance on mobile */
+    opacity: 1;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .matrix-grid-container {
+    opacity: 1;
+  }
+}
+
+/* Header Dropdown Styles */
+header nav > div {
+  position: relative;
+}
+
+header nav > div > div {
+  animation: fadeInDown 0.2s ease-out;
+}
+
+/* Ensure dropdowns are visible */
+header .absolute {
+  position: absolute !important;
+  z-index: 200 !important;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Shape Animation - Fixed Center Background */
+#hero-shape {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hero-1 {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  filter: blur(80px);
+  background: linear-gradient(#7440FA, #8B5CF6);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+#hero-2 {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation-name: anime2;
+  animation-duration: 8s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  background: linear-gradient(#7440FA, #A78BFA);
+  opacity: 0.5;
+}
+
+#hero-3 {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+  filter: blur(60px);
+  animation-name: anime1;
+  animation-duration: 8s;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  background: linear-gradient(#7440FA, #7C3AED);
+  opacity: 0.5;
+}
+
+@keyframes anime1 {
+  from {
+    transform: translate(-30%, -20%);
+  }
+  to {
+    transform: translate(30%, 20%);
+  }
+}
+
+@keyframes anime2 {
+  from {
+    transform: translate(20%, -30%);
+  }
+  to {
+    transform: translate(-20%, 30%);
+  }
+}
+
