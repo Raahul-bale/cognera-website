@@ -39,14 +39,7 @@ export default function HomePage() {
         
         {/* Value Proposition */}
         <div className="py-4 sm:py-6">
-          <ValueProposition 
-            title="The Three-Layered Approach"
-            items={[
-              '1. Data Foundation: We capture precise time and access logs.',
-              '2. Insights Engine: We calculate Flow State Duration and Distraction Scores.',
-              '3. Action Framework: We enable real-time coaching and workflow optimization.'
-            ]}
-          />
+          <ValueProposition />
         </div>
         
         {/* Demo Form */}

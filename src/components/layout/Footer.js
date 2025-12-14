@@ -79,45 +79,6 @@ export default function Footer() {
         background: 'linear-gradient(to bottom, #7440FA, #000000)'
       }}
     >
-      {/* Large Brand Name with Gradient - Behind Footer Content */}
-      <div 
-        className="absolute inset-0 flex items-end justify-center pointer-events-none"
-        style={{ zIndex: 1, paddingBottom: '2rem', bottom: 0, overflow: 'visible' }}
-      >
-        <h1 
-          className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] font-bold leading-none text-center relative inline-block px-2"
-          style={{ 
-            fontFamily: 'var(--font-inter), sans-serif',
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.4))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            letterSpacing: '-0.02em',
-            opacity: opacity,
-            transform: `translateY(${translateY}px)`,
-            transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
-            lineHeight: '1.1',
-            paddingBottom: '0.1em'
-          }}
-        >
-          Cognera
-          <sup 
-            style={{ 
-              fontSize: '0.25em',
-              verticalAlign: 'super',
-              lineHeight: 0,
-              position: 'relative',
-              top: '-0.2em',
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.4))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}
-          >
-            TM
-          </sup>
-        </h1>
-      </div>
 
       {/* Footer Content - In Front */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -166,14 +127,12 @@ export default function Footer() {
                 </svg>
               </a>
               <a 
-                href="https://www.g2.com/products/cognera" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/resources" 
                 className="text-white hover:text-[#7440FA] transition-colors font-bold text-base sm:text-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
-                aria-label="G2"
+                aria-label="Resources"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
-                G²
+                Docs
               </a>
             </div>
           </div>
@@ -295,11 +254,45 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="text-center mb-24 sm:mb-32 lg:mb-40 xl:mb-48">
+        <div className="text-center mb-8 sm:mb-12">
           <p className="text-gray-400 text-xs sm:text-sm" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
             &copy; 2025 Cognera Data Labs, Inc. All rights reserved. Cognera is a registered trademark of Cognera Data Labs, Inc.
           </p>
         </div>
+      </div>
+
+      {/* Brand Name - At the bottom of footer */}
+      <div className="text-center absolute bottom-0 left-0 right-0 pb-8 sm:pb-12">
+        <h2 
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white"
+          style={{ 
+            fontFamily: 'var(--font-inter), sans-serif',
+            opacity: opacity,
+            transform: `translateY(${translateY}px)`,
+            transition: 'opacity 0.3s ease, transform 0.3s ease',
+            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}
+        >
+          Cognera Data Labs
+          <sup 
+            style={{ 
+              fontSize: '0.25em',
+              verticalAlign: 'super',
+              lineHeight: 0,
+              position: 'relative',
+              top: '-0.3em',
+              marginLeft: '2px',
+              fontWeight: 'normal',
+              WebkitTextFillColor: 'rgba(255, 255, 255, 0.8)',
+              color: 'rgba(255, 255, 255, 0.8)'
+            }}
+          >
+            TM
+          </sup>
+        </h2>
       </div>
     </footer>
   )

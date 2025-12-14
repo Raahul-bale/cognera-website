@@ -1,16 +1,36 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const dropdownTimeoutRef = useRef(null)
   
   const hasActiveDropdown = activeDropdown !== null
+
+  const handleDropdownEnter = (dropdownName) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current)
+      dropdownTimeoutRef.current = null
+    }
+    setActiveDropdown(dropdownName)
+  }
+
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null)
+    }, 200)
+  }
 
   useEffect(() => {
     if (activeDropdown) {
       console.log('Dropdown active:', activeDropdown)
+    }
+    return () => {
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current)
+      }
     }
   }, [activeDropdown])
 
@@ -150,18 +170,18 @@ export default function Header() {
 
   const platformMenu = {
     'AI / Intelligence': [
-      { name: 'AI Behaviour Engine', description: 'Behaviour processing layer', icon: 'ai-behaviour-engine', href: '/platform/ai-behaviour-engine' },
-      { name: 'Behaviour Insight Layer', description: 'Behaviour interpretation layer', icon: 'behaviour-insight-layer', href: '/platform/behaviour-insight-layer' },
+      { name: 'AI Behavior Engine', description: 'Behavior processing layer', icon: 'ai-behaviour-engine', href: '/platform/ai-behavior-engine' },
+      { name: 'Behavior Insight Layer', description: 'Behavior interpretation layer', icon: 'behaviour-insight-layer', href: '/platform/behavior-insight-layer' },
       { name: 'Cognera MCP', description: 'Core intelligence framework', icon: 'cognera-mcp', href: '/platform/cognera-mcp' }
     ],
     'Insights': [
-      { name: 'Product Behaviour Analytics', description: 'Feature usage behaviour', icon: 'product-behaviour-analytics', href: '/platform/product-behaviour-analytics' },
-      { name: 'Session Flow Analytics', description: 'Session-level behaviour flow', icon: 'session-flow-analytics', href: '/platform/session-flow-analytics' },
+      { name: 'Product Behavior Analytics', description: 'Feature usage behavior', icon: 'product-behaviour-analytics', href: '/platform/product-behavior-analytics' },
+      { name: 'Session Flow Analytics', description: 'Session-level behavior flow', icon: 'session-flow-analytics', href: '/platform/session-flow-analytics' },
       { name: 'Attention & Distraction Mapping', description: 'Focus & distraction patterns', icon: 'attention-distraction-mapping', href: '/platform/attention-distraction-mapping' },
-      { name: 'Behaviour Cohorts', description: 'Behaviour-based grouping', icon: 'behaviour-cohorts', href: '/platform/behaviour-cohorts' }
+      { name: 'Behavior Cohorts', description: 'Behavior-based grouping', icon: 'behaviour-cohorts', href: '/platform/behavior-cohorts' }
     ],
     'Action (Light)': [
-      { name: 'Insight-Driven Recommendations', description: 'Behaviour-based signals', icon: 'insight-driven-recommendations', href: '/platform/insight-driven-recommendations' },
+      { name: 'Insight-Driven Recommendations', description: 'Behavior-based signals', icon: 'insight-driven-recommendations', href: '/platform/insight-driven-recommendations' },
       { name: 'Experience Optimization Signals', description: 'Experience guidance indicators', icon: 'experience-optimization-signals', href: '/platform/experience-optimization-signals' }
     ],
     'Data & Trust': [
@@ -172,12 +192,12 @@ export default function Header() {
   }
 
   const solutionsMenu = [
-    { name: 'For Product Teams', description: 'Build better products using real behavioural insights.' },
+    { name: 'For Product Teams', description: 'Build better products using real behavioral insights.' },
     { name: 'For Marketing Teams', description: 'Understand engagement quality and attention patterns without tracking personal data.' },
-    { name: 'For Engineering Teams', description: 'Validate product decisions using real-world behaviour signals.' },
-    { name: 'For Executives', description: 'Monitor engagement health and behavioural risk at a strategic level.' },
-    { name: 'For Data & Analytics Teams', description: 'Augment analytics with privacy-safe behavioural intelligence.' },
-    { name: 'For Privacy & Compliance Teams', description: 'Adopt behavioural analytics without violating user trust or regulations.' }
+    { name: 'For Engineering Teams', description: 'Validate product decisions using real-world behavior signals.' },
+    { name: 'For Executives', description: 'Monitor engagement health and behavioral risk at a strategic level.' },
+    { name: 'For Data & Analytics Teams', description: 'Augment analytics with privacy-safe behavioral intelligence.' },
+    { name: 'For Privacy & Compliance Teams', description: 'Adopt behavioral analytics without violating user trust or regulations.' }
   ]
 
   const resourcesMenu = [
@@ -203,42 +223,46 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 z-[100]" 
         style={{ overflow: 'visible' }}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative" style={{ overflow: 'visible' }}>
-          {/* Dark gradient rounded navigation bar */}
-          <div 
-            className="mt-2 shadow-lg relative z-[201]"
-            style={{ 
-              background: hasActiveDropdown 
-                ? 'linear-gradient(to bottom, #000000 0%, #7440FA 100%)' 
-                : 'linear-gradient(to bottom, #000000, #7440FA)', 
-              overflow: 'visible', 
-              borderRadius: '9999px',
-              borderTopLeftRadius: '9999px',
-              borderTopRightRadius: '9999px',
-              borderBottomLeftRadius: hasActiveDropdown ? '0' : '9999px',
-              borderBottomRightRadius: hasActiveDropdown ? '0' : '9999px',
-              transition: 'border-radius 0.2s ease, background 0.2s ease'
-            }}
-          >
+        <div className="w-full relative" style={{ overflow: 'visible' }}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative" style={{ overflow: 'visible' }}>
+            {/* Dark gradient rounded navigation bar */}
+            <div 
+              className="mt-2 shadow-lg relative z-[201]"
+              style={{ 
+                background: hasActiveDropdown 
+                  ? 'linear-gradient(to bottom, #000000 0%, #7440FA 100%)' 
+                  : 'linear-gradient(to bottom, #000000, #7440FA)', 
+                overflow: 'visible', 
+                borderRadius: '9999px',
+                borderTopLeftRadius: '9999px',
+                borderTopRightRadius: '9999px',
+                borderBottomLeftRadius: hasActiveDropdown ? '0' : '9999px',
+                borderBottomRightRadius: hasActiveDropdown ? '0' : '9999px',
+                transition: 'border-radius 0.2s ease, background 0.2s ease',
+                marginBottom: hasActiveDropdown ? '0' : '0',
+                position: 'relative'
+              }}
+            >
             <div className="flex justify-between items-center py-3 px-4 sm:px-6 relative" style={{ overflow: 'visible' }}>
               {/* Logo */}
               <a href="/" className="flex items-center hover:opacity-80 transition-opacity min-h-[44px] min-w-[44px]">
                 <img 
                   src="/img/android-chrome-512x512.png" 
-                  alt="Cognera Logo" 
-                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mr-2"
+                  alt="Cognera Data Labs Logo" 
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mr-3"
                   style={{ objectFit: 'contain' }}
                 />
                 <h1 className="text-lg sm:text-xl md:text-2xl text-white font-semibold relative inline-block" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                  Cognera
+                  Cognera Data Labs
                   <sup 
                     style={{ 
-                      fontSize: '0.35em',
+                      fontSize: '0.25em',
                       verticalAlign: 'super',
                       lineHeight: 0,
                       position: 'relative',
-                      top: '-0.2em',
-                      marginLeft: '2px'
+                      top: '-0.3em',
+                      marginLeft: '1px',
+                      fontWeight: 'normal'
                     }}
                   >
                     TM
@@ -251,8 +275,8 @@ export default function Header() {
                 {/* Platform Dropdown */}
                 <div 
                   className="relative pointer-events-auto"
-                  onMouseEnter={() => setActiveDropdown('platform')}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseEnter={() => handleDropdownEnter('platform')}
+                  onMouseLeave={handleDropdownLeave}
                 >
                   <button 
                     type="button"
@@ -260,71 +284,17 @@ export default function Header() {
                       activeDropdown === 'platform' ? 'text-[#7440FA] border-b-2 border-[#7440FA]' : 'hover:text-[#7440FA]'
                     }`}
                     style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                    onMouseEnter={() => handleDropdownEnter('platform')}
                   >
                     Platform
                   </button>
-                  {activeDropdown === 'platform' && (
-                    <div 
-                      className="fixed left-0 right-0 z-[200] pointer-events-auto"
-                      style={{ 
-                        top: 'calc(64px)',
-                        display: 'block',
-                        paddingTop: '0',
-                      }}
-                      onMouseEnter={() => setActiveDropdown('platform')}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div 
-                          className="py-8 shadow-2xl" 
-                          style={{ 
-                            background: 'linear-gradient(to bottom, #7440FA 0%, #7440FA 5%, #5a2fc7 20%, #3d1f8f 40%, #1a1a1a 100%)',
-                            borderTopLeftRadius: '0',
-                            borderTopRightRadius: '0',
-                            borderBottomLeftRadius: '1.5rem',
-                            borderBottomRightRadius: '1.5rem',
-                            marginTop: '0'
-                          }}
-                        >
-                          <div className="flex flex-row gap-6 px-4 sm:px-6">
-                          {Object.entries(platformMenu).map(([category, items]) => (
-                            <div key={category} className="flex flex-col gap-3 flex-1">
-                              <h3 className="text-xs font-semibold text-white/80 uppercase tracking-wider mb-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>{category}</h3>
-                              {items.map((item, index) => (
-                                <a
-                                  key={index}
-                                  href={item.href}
-                                  className="group hover:bg-white/10 p-3 rounded-lg transition-all cursor-pointer border border-transparent hover:border-white/20"
-                                >
-                                  <div className="flex items-start gap-3">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/80 group-hover:bg-white/10 group-hover:text-white transition-colors">
-                                      {getIcon(item.icon)}
-                                    </div>
-                                    <div className="flex-1">
-                                      <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors mb-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                        {item.name}
-                                      </p>
-                                      <p className="text-xs text-gray-300 leading-relaxed" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                        {item.description}
-                                      </p>
-                                    </div>
-                                  </div>
-                                </a>
-                              ))}
-                            </div>
-                          ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Solutions Dropdown */}
                 <div 
                   className="relative pointer-events-auto"
-                  onMouseEnter={() => setActiveDropdown('solutions')}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseEnter={() => handleDropdownEnter('solutions')}
+                  onMouseLeave={handleDropdownLeave}
                 >
                   <button 
                     type="button"
@@ -332,62 +302,17 @@ export default function Header() {
                       activeDropdown === 'solutions' ? 'text-[#7440FA] border-b-2 border-[#7440FA]' : 'hover:text-[#7440FA]'
                     }`}
                     style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                    onMouseEnter={() => handleDropdownEnter('solutions')}
                   >
                     Solutions
                   </button>
-                  {activeDropdown === 'solutions' && (
-                    <div 
-                      className="fixed left-0 right-0 z-[200] pointer-events-auto"
-                      style={{ 
-                        top: 'calc(64px)',
-                        display: 'block',
-                        paddingTop: '0',
-                      }}
-                      onMouseEnter={() => setActiveDropdown('solutions')}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div 
-                          className="py-8 shadow-2xl" 
-                          style={{ 
-                            background: 'linear-gradient(to bottom, #7440FA 0%, #7440FA 5%, #5a2fc7 20%, #3d1f8f 40%, #1a1a1a 100%)',
-                            borderTopLeftRadius: '0',
-                            borderTopRightRadius: '0',
-                            borderBottomLeftRadius: '1.5rem',
-                            borderBottomRightRadius: '1.5rem',
-                            marginTop: '0'
-                          }}
-                        >
-                          <div className="flex flex-row gap-8 px-4 sm:px-6">
-                          <div className="flex flex-col gap-3">
-                            <h3 className="text-sm font-semibold text-white/80 mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>Solutions</h3>
-                            {solutionsMenu.map((item, index) => (
-                              <a
-                                key={index}
-                                href={`/solutions/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                className="block py-3 px-4 rounded hover:bg-white/10 transition-colors group border border-transparent hover:border-white/20"
-                              >
-                                <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                  {item.name}
-                                </p>
-                                <p className="text-xs text-gray-300 mt-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                  {item.description}
-                                </p>
-                              </a>
-                            ))}
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Resources Dropdown */}
                 <div 
                   className="relative pointer-events-auto"
-                  onMouseEnter={() => setActiveDropdown('resources')}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseEnter={() => handleDropdownEnter('resources')}
+                  onMouseLeave={handleDropdownLeave}
                 >
                   <button 
                     type="button"
@@ -395,64 +320,17 @@ export default function Header() {
                       activeDropdown === 'resources' ? 'text-[#7440FA] border-b-2 border-[#7440FA]' : 'hover:text-[#7440FA]'
                     }`}
                     style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                    onMouseEnter={() => handleDropdownEnter('resources')}
                   >
                     Resources
                   </button>
-                  {activeDropdown === 'resources' && (
-                    <div 
-                      className="fixed left-0 right-0 z-[200] pointer-events-auto"
-                      style={{ 
-                        top: 'calc(64px)',
-                        display: 'block',
-                        paddingTop: '0',
-                      }}
-                      onMouseEnter={() => setActiveDropdown('resources')}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div 
-                          className="py-8 shadow-2xl" 
-                          style={{ 
-                            background: 'linear-gradient(to bottom, #7440FA 0%, #7440FA 5%, #5a2fc7 20%, #3d1f8f 40%, #1a1a1a 100%)',
-                            borderTopLeftRadius: '0',
-                            borderTopRightRadius: '0',
-                            borderBottomLeftRadius: '1.5rem',
-                            borderBottomRightRadius: '1.5rem',
-                            marginTop: '0'
-                          }}
-                        >
-                          <div className="flex flex-row gap-8 px-4 sm:px-6">
-                          <div className="flex flex-col gap-3">
-                            <h3 className="text-sm font-semibold text-white/80 mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>Resources</h3>
-                            {resourcesMenu.map((item, index) => (
-                              <a
-                                key={index}
-                                href={item.href || `/resources/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                                className="block py-3 px-4 rounded hover:bg-white/10 transition-colors group border border-transparent hover:border-white/20"
-                              >
-                                <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                  {item.name}
-                                </p>
-                                {item.description && (
-                                  <p className="text-xs text-gray-300 mt-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                    {item.description}
-                                  </p>
-                                )}
-                              </a>
-                            ))}
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Pricing Dropdown */}
                 <div 
                   className="relative pointer-events-auto"
-                  onMouseEnter={() => setActiveDropdown('pricing')}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseEnter={() => handleDropdownEnter('pricing')}
+                  onMouseLeave={handleDropdownLeave}
                 >
                   <button 
                     type="button"
@@ -460,57 +338,10 @@ export default function Header() {
                       activeDropdown === 'pricing' ? 'text-[#7440FA] border-b-2 border-[#7440FA]' : 'hover:text-[#7440FA]'
                     }`}
                     style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                    onMouseEnter={() => handleDropdownEnter('pricing')}
                   >
                     Pricing
                   </button>
-                  {activeDropdown === 'pricing' && (
-                    <div 
-                      className="fixed left-0 right-0 z-[200] pointer-events-auto"
-                      style={{ 
-                        top: 'calc(64px)',
-                        display: 'block',
-                        paddingTop: '0',
-                      }}
-                      onMouseEnter={() => setActiveDropdown('pricing')}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div 
-                          className="py-8 shadow-2xl" 
-                          style={{ 
-                            background: 'linear-gradient(to bottom, #7440FA 0%, #7440FA 5%, #5a2fc7 20%, #3d1f8f 40%, #1a1a1a 100%)',
-                            borderTopLeftRadius: '0',
-                            borderTopRightRadius: '0',
-                            borderBottomLeftRadius: '1.5rem',
-                            borderBottomRightRadius: '1.5rem',
-                            marginTop: '0'
-                          }}
-                        >
-                          <div className="flex flex-row gap-8 px-4 sm:px-6">
-                          <div className="flex flex-col gap-3">
-                            <h3 className="text-sm font-semibold text-white/80 mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>Pricing</h3>
-                            {pricingMenu.map((item, index) => (
-                              <a
-                                key={index}
-                                href={item.href}
-                                className="block py-3 px-4 rounded hover:bg-white/10 transition-colors group border border-transparent hover:border-white/20"
-                              >
-                                <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                  {item.name}
-                                </p>
-                                {item.description && (
-                                  <p className="text-xs text-gray-300 mt-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                    {item.description}
-                                  </p>
-                                )}
-                              </a>
-                            ))}
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Right Side Actions */}
@@ -562,8 +393,198 @@ export default function Header() {
                 </svg>
               </button>
             </div>
+            
+            {/* Shared Dropdown Container - Positioned right below nav bar */}
+            {hasActiveDropdown && (
+              <div 
+                className="absolute left-0 right-0 z-[200] pointer-events-auto"
+                style={{ 
+                  top: '100%',
+                  marginTop: '0',
+                  paddingTop: '0',
+                  left: '0',
+                  right: '0'
+                }}
+                onMouseEnter={() => handleDropdownEnter(activeDropdown)}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <div className="w-full">
+                  <div 
+                    className="py-8 shadow-2xl" 
+                    style={{ 
+                      background: 'linear-gradient(to bottom, #7440FA 0%, #7440FA 3%, #5a2fc7 15%, #3d1f8f 35%, #1a1a1a 100%)',
+                      borderTopLeftRadius: '0',
+                      borderTopRightRadius: '0',
+                      borderBottomLeftRadius: '1.5rem',
+                      borderBottomRightRadius: '1.5rem',
+                      marginTop: '0',
+                      marginLeft: '0',
+                      marginRight: '0'
+                    }}
+                  >
+                    {activeDropdown === 'platform' && (
+                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-row gap-6 px-4 sm:px-6">
+                          {Object.entries(platformMenu).map(([category, items]) => (
+                            <div key={category} className="flex flex-col gap-3 flex-1">
+                              <h3 className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif', color: 'rgba(255, 255, 255, 0.9)' }}>{category}</h3>
+                              {items.map((item, index) => (
+                                <a
+                                  key={index}
+                                  href={item.href}
+                                  className="group p-3 rounded-lg transition-all cursor-pointer border border-transparent hover:border-white/20 min-h-[60px] block"
+                                  style={{
+                                    backgroundColor: 'transparent'
+                                  }}
+                                  onMouseEnter={(e) => {
+                                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    e.currentTarget.style.backgroundColor = 'transparent'
+                                  }}
+                                >
+                                  <div className="flex items-start gap-3">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center transition-colors group-hover:bg-white/20" style={{ color: '#ffffff' }}>
+                                      {getIcon(item.icon)}
+                                    </div>
+                                    <div className="flex-1">
+                                      <p 
+                                        className="font-semibold text-sm transition-colors mb-1" 
+                                        style={{ 
+                                          fontFamily: 'var(--font-inter), sans-serif', 
+                                          color: '#ffffff'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                          e.currentTarget.style.color = '#A78BFA'
+                                        }}
+                                        onMouseLeave={(e) => {
+                                          e.currentTarget.style.color = '#ffffff'
+                                        }}
+                                      >
+                                        {item.name}
+                                      </p>
+                                      <p 
+                                        className="text-xs leading-relaxed transition-colors" 
+                                        style={{ 
+                                          fontFamily: 'var(--font-inter), sans-serif', 
+                                          color: 'rgba(255, 255, 255, 0.9)'
+                                        }}
+                                      >
+                                        {item.description}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </a>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    {activeDropdown === 'solutions' && (
+                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-row gap-8 px-4 sm:px-6">
+                          <div className="flex flex-col gap-3">
+                            <h3 className="text-sm font-semibold mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif', color: 'rgba(255, 255, 255, 0.9)' }}>Solutions</h3>
+                            {solutionsMenu.map((item, index) => (
+                              <a
+                                key={index}
+                                href={`/solutions/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                className="block py-3 px-4 rounded transition-colors group border border-transparent hover:border-white/20 min-h-[60px]"
+                                style={{ backgroundColor: 'transparent' }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.backgroundColor = 'transparent'
+                                }}
+                              >
+                              <p className="font-semibold text-sm transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif', color: '#ffffff' }}>
+                                {item.name}
+                              </p>
+                              <p className="text-xs mt-1 transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif', color: 'rgba(255, 255, 255, 0.8)' }}>
+                                {item.description}
+                              </p>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {activeDropdown === 'resources' && (
+                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-row gap-8 px-4 sm:px-6">
+                          <div className="flex flex-col gap-3">
+                            <h3 className="text-sm font-semibold mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif', color: 'rgba(255, 255, 255, 0.9)' }}>Resources</h3>
+                            {resourcesMenu.map((item, index) => (
+                              <a
+                                key={index}
+                                href={item.href || `/resources/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                className="block py-3 px-4 rounded transition-colors group border border-transparent hover:border-white/20 min-h-[60px]"
+                                style={{ backgroundColor: 'transparent' }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.backgroundColor = 'transparent'
+                                }}
+                              >
+                                <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                                  {item.name}
+                                </p>
+                                {item.description && (
+                                  <p className="text-xs text-white/70 group-hover:text-white/90 mt-1 transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                                    {item.description}
+                                  </p>
+                                )}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {activeDropdown === 'pricing' && (
+                      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-row gap-8 px-4 sm:px-6">
+                          <div className="flex flex-col gap-3">
+                            <h3 className="text-sm font-semibold mb-2" style={{ fontFamily: 'var(--font-inter), sans-serif', color: 'rgba(255, 255, 255, 0.9)' }}>Pricing</h3>
+                            {pricingMenu.map((item, index) => (
+                              <a
+                                key={index}
+                                href={item.href}
+                                className="block py-3 px-4 rounded transition-colors group border border-transparent hover:border-white/20 min-h-[60px]"
+                                style={{ backgroundColor: 'transparent' }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.backgroundColor = 'transparent'
+                                }}
+                              >
+                                <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                                  {item.name}
+                                </p>
+                                {item.description && (
+                                  <p className="text-xs text-white/70 group-hover:text-white/90 mt-1 transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                                    {item.description}
+                                  </p>
+                                )}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
+      </div>
       </header>
 
       {/* Mobile Navigation */}

@@ -8,8 +8,28 @@ export default function AuthCard({ children, title, subtitle, logo = true }) {
         <div className="bg-[#1a1a1a] rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl border border-gray-800">
           {logo && (
             <div className="flex items-center justify-center mb-4 sm:mb-6">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#7440FA] transform rotate-45 mr-2"></div>
-              <h1 className="text-xl sm:text-2xl font-bold text-white">Cognera</h1>
+              <img 
+                src="/img/android-chrome-512x512.png" 
+                alt="Cognera Data Labs Logo" 
+                className="w-10 h-10 sm:w-12 sm:h-12 mr-3"
+                style={{ objectFit: 'contain' }}
+              />
+              <h1 className="text-xl sm:text-2xl font-bold text-white" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                Cognera Data Labs
+                <sup 
+                  style={{ 
+                    fontSize: '0.25em',
+                    verticalAlign: 'super',
+                    lineHeight: 0,
+                    position: 'relative',
+                    top: '-0.3em',
+                    marginLeft: '1px',
+                    fontWeight: 'normal'
+                  }}
+                >
+                  TM
+                </sup>
+              </h1>
             </div>
           )}
           

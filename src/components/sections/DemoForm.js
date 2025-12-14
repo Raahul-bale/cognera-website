@@ -146,7 +146,7 @@ export default function DemoForm() {
                 </p>
                 <Checkbox
                   name="agreeToTerms"
-                  label="I agree to the Terms & Conditions"
+                  label="I agree to the Terms of Use and Privacy Statement"
                   checked={formData.agreeToTerms}
                   onChange={handleChange}
                   isLight={true}

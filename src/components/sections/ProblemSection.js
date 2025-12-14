@@ -1,10 +1,10 @@
 export default function ProblemSection() {
   const challenges = [
-    'Users switch apps frequently, breaking attention flow',
-    'Drop-offs happen without behavioural context',
-    'Engagement fluctuates without clear reasons',
-    'Privacy laws restrict conventional tracking',
-    'Teams cannot see distraction patterns or deep-work sessions'
+    'Users switch between apps frequently, breaking focus and productivity.',
+    'Engagement fluctuates without clear behavioral insight.',
+    'Teams lack visibility into distraction patterns or deep-work cycles.',
+    'Drop-offs occur without context to understand root causes.',
+    'Privacy regulations limit traditional tracking methods.'
   ]
 
   return (
@@ -18,17 +18,17 @@ export default function ProblemSection() {
           </div>
           <div className="flex-1">
             <h2 className="text-3xl sm:text-4xl md:text-5xl text-white mb-3 sm:mb-4 font-bold leading-tight" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-              Analytics show what happened. Cognera shows how it happened.
+              Analytics show what happened. Cognera reveals why it happened.
             </h2>
             <p className="text-lg sm:text-xl text-white/80 mb-6 leading-relaxed" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-              Traditional analytics stop at clicks, visits, and events. They do not explain behaviour.
+              Traditional analytics stop at clicks, visits, and events. They don't explain human behavior or the drivers behind user actions.
             </p>
           </div>
         </div>
         
         <div className="mb-6">
           <h3 className="text-xl sm:text-2xl text-white mb-4 font-semibold" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-            {`Today's challenges:`}
+            Critical challenges facing teams today:
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {challenges.map((challenge, index) => (
@@ -46,7 +46,7 @@ export default function ProblemSection() {
         
         <div className="pt-6 border-t border-white/10">
           <p className="text-xl sm:text-2xl text-white font-bold text-center" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-            Companies make decisions with half information.
+            Companies are forced to make decisions with only half the picture.
           </p>
         </div>
       </div>

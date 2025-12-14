@@ -31,7 +31,7 @@ export default function FeatureGrid() {
       gradient: 'from-blue-700/90 to-blue-800/90'
     },
     {
-      title: 'Behaviour Cohorts',
+      title: 'Behavior Cohorts',
       description: 'Group users based on usage habits, not personal data.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

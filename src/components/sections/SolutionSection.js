@@ -3,7 +3,7 @@ export default function SolutionSection() {
     {
       number: '1',
       title: 'Data Layer',
-      description: 'Anonymous behavioural signals such as:',
+      description: 'Anonymous behavioral signals such as:',
       items: ['Session windows', 'App switches', 'Focus time', 'Flow disruptions'],
       gradient: 'from-slate-700/90 to-slate-800/90',
       iconColor: 'text-blue-300',
@@ -13,7 +13,7 @@ export default function SolutionSection() {
       number: '2',
       title: 'Insights Layer',
       description: 'AI models convert signals into:',
-      items: ['Flow state detection', 'Behaviour cohorts', 'Distraction and recovery patterns', 'Intent and engagement mapping'],
+      items: ['Flow state detection', 'Behavior cohorts', 'Distraction and recovery patterns', 'Intent and engagement mapping'],
       gradient: 'from-indigo-700/90 to-indigo-800/90',
       iconColor: 'text-indigo-300',
       bgColor: 'bg-indigo-700/40'
@@ -32,7 +32,7 @@ export default function SolutionSection() {
   return (
     <section className="solution-section max-w-6xl mx-auto mb-8 sm:mb-12 px-4 sm:px-6 pointer-events-none relative z-10">
       <h2 className="text-3xl sm:text-4xl md:text-5xl text-white text-center mb-8 sm:mb-10 font-bold pointer-events-auto" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-        A Three-Layer Behaviour Intelligence System
+        A Three-Layer Behavior Intelligence System
       </h2>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
