@@ -14,7 +14,7 @@ export default function FinalCTA() {
             Get a personalised walkthrough of how Cognera can improve user experience, engagement, and digital productivity.
           </p>
           <div className="pointer-events-auto">
-            <Button href="/demo" variant="primary" className="text-lg px-10 py-5 text-xl">
+            <Button href="/demo" variant="primary" className="text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-5 w-full sm:w-auto">
               Book a Demo
             </Button>
           </div>

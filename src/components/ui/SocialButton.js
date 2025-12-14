@@ -35,7 +35,7 @@ export default function SocialButton({
     <button
       type="button"
       onClick={onClick}
-      className={`w-full flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-[#1a1a1a] border border-gray-700 text-white hover:border-[#7440FA] transition-all duration-300 text-sm sm:text-base ${className}`}
+      className={`w-full flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 sm:py-3 rounded-lg bg-[#1a1a1a] border border-gray-700 text-white hover:border-[#7440FA] transition-all duration-300 text-sm sm:text-base min-h-[44px] ${className}`}
       {...props}
     >
       {providerData.icon}

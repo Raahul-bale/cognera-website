@@ -85,7 +85,7 @@ export default function Footer() {
         style={{ zIndex: 1, paddingBottom: '2rem', bottom: 0, overflow: 'visible' }}
       >
         <h1 
-          className="text-8xl sm:text-9xl lg:text-[12rem] xl:text-[14rem] font-bold leading-none text-center relative inline-block"
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] font-bold leading-none text-center relative inline-block px-2"
           style={{ 
             fontFamily: 'var(--font-inter), sans-serif',
             background: 'linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.4))',
@@ -122,20 +122,20 @@ export default function Footer() {
       {/* Footer Content - In Front */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Left Side - Product Links and Social Icons */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 w-full lg:w-auto">
             <div className="flex flex-col gap-2">
               <a 
                 href="/platform/ai-feedback" 
-                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base"
+                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 AI Feedback
               </a>
               <a 
                 href="/platform/cognera-mcp" 
-                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base"
+                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Cognera MCP
@@ -147,7 +147,7 @@ export default function Footer() {
                 href="https://linkedin.com/company/cognera" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#7440FA] transition-colors"
+                className="text-white hover:text-[#7440FA] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                 aria-label="LinkedIn"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -158,7 +158,7 @@ export default function Footer() {
                 href="https://twitter.com/cognera" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#7440FA] transition-colors"
+                className="text-white hover:text-[#7440FA] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                 aria-label="Twitter"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -169,7 +169,7 @@ export default function Footer() {
                 href="https://www.g2.com/products/cognera" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#7440FA] transition-colors font-bold text-lg"
+                className="text-white hover:text-[#7440FA] transition-colors font-bold text-base sm:text-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
                 aria-label="G2"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
@@ -179,13 +179,13 @@ export default function Footer() {
           </div>
 
           {/* Right Side - Navigation Links */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 w-full lg:w-auto">
             {/* Company Links */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               <div className="flex flex-col gap-1">
                 <a 
                   href="/contact" 
-                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold py-2 min-h-[44px] flex items-center"
                   style={{ fontFamily: 'var(--font-inter), sans-serif' }}
                 >
                   Contact Us
@@ -197,7 +197,7 @@ export default function Footer() {
               <div className="flex flex-col gap-1">
                 <a 
                   href="/privacy" 
-                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold py-2 min-h-[44px] flex items-center"
                   style={{ fontFamily: 'var(--font-inter), sans-serif' }}
                 >
                   Privacy Policy
@@ -209,7 +209,7 @@ export default function Footer() {
               <div className="flex flex-col gap-1">
                 <a 
                   href="/terms" 
-                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold py-2 min-h-[44px] flex items-center"
                   style={{ fontFamily: 'var(--font-inter), sans-serif' }}
                 >
                   Terms of Service
@@ -221,7 +221,7 @@ export default function Footer() {
               <div className="flex flex-col gap-1">
                 <a 
                   href="/security" 
-                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold py-2 min-h-[44px] flex items-center"
                   style={{ fontFamily: 'var(--font-inter), sans-serif' }}
                 >
                   Security & Compliance
@@ -233,59 +233,59 @@ export default function Footer() {
             </div>
 
             {/* Language Options */}
-            <div className="flex flex-wrap gap-4 sm:gap-6">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               <a 
                 href="/?lang=en" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 English
               </a>
               <a 
                 href="/?lang=ja" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Japanese (日本語)
               </a>
               <a 
                 href="/?lang=ko" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Korean (한국어)
               </a>
               <a 
                 href="/?lang=es" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Español (Spain)
               </a>
               <a 
                 href="/?lang=pt-br" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Português (Brasil)
               </a>
               <a 
                 href="/?lang=pt" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Português (Portugal)
               </a>
               <a 
                 href="/?lang=fr" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Français
               </a>
               <a 
                 href="/?lang=de" 
-                className="text-gray-400 hover:text-white transition-colors text-sm"
+                className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm py-2 min-h-[44px] flex items-center"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Deutsch

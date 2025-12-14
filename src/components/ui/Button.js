@@ -8,7 +8,7 @@ export default function Button({
   className = '',
   ...props 
 }) {
-  const baseClasses = 'font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 text-base sm:text-lg hover:shadow-lg'
+  const baseClasses = 'font-semibold py-3 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 text-base sm:text-lg hover:shadow-lg min-h-[44px] flex items-center justify-center'
   
   const variantClasses = {
     primary: 'cta-primary-button text-white',

@@ -222,14 +222,14 @@ export default function Header() {
           >
             <div className="flex justify-between items-center py-3 px-4 sm:px-6 relative" style={{ overflow: 'visible' }}>
               {/* Logo */}
-              <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <a href="/" className="flex items-center hover:opacity-80 transition-opacity min-h-[44px] min-w-[44px]">
                 <img 
                   src="/img/android-chrome-512x512.png" 
                   alt="Cognera Logo" 
-                  className="w-16 h-16 mr-2"
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mr-2"
                   style={{ objectFit: 'contain' }}
                 />
-                <h1 className="text-xl sm:text-2xl text-white font-semibold relative inline-block" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                <h1 className="text-lg sm:text-xl md:text-2xl text-white font-semibold relative inline-block" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                   Cognera
                   <sup 
                     style={{ 
@@ -550,7 +550,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden text-white p-2"
+                className="lg:hidden text-white p-3 min-h-[44px] min-w-[44px] flex items-center justify-center"
                 aria-label="Toggle menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -569,36 +569,32 @@ export default function Header() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div 
-          className="fixed top-20 left-0 right-0 z-[99] mx-4 mt-2 shadow-lg" 
+          className="fixed top-20 left-0 right-0 z-[99] mx-2 sm:mx-4 mt-2 shadow-lg max-h-[calc(100vh-5rem)] overflow-y-auto" 
           style={{ 
             background: 'linear-gradient(to bottom, #000000, #7440FA)',
-            borderRadius: '9999px',
-            borderTopLeftRadius: '9999px',
-            borderTopRightRadius: '9999px',
-            borderBottomLeftRadius: '9999px',
-            borderBottomRightRadius: '9999px'
+            borderRadius: '1rem',
           }}
         >
           <nav className="pb-4 px-4">
-            <div className="flex flex-col gap-4 pt-4">
+            <div className="flex flex-col gap-2 pt-4">
               <button
                 type="button"
                 onClick={() => setActiveDropdown(activeDropdown === 'platform-mobile' ? null : 'platform-mobile')}
-                className="text-white text-left py-2 flex justify-between items-center"
+                className="text-white text-left py-3 px-2 flex justify-between items-center min-h-[44px] text-base"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Platform
-                <span>{activeDropdown === 'platform-mobile' ? '−' : '+'}</span>
+                <span className="text-xl">{activeDropdown === 'platform-mobile' ? '−' : '+'}</span>
               </button>
               {activeDropdown === 'platform-mobile' && (
-                <div className="pl-4 space-y-2">
+                <div className="pl-4 space-y-1">
                   {Object.entries(platformMenu).map(([category, items]) => (
                     <div key={category}>
                       {items.map((item, index) => (
                         <a
                           key={index}
                           href={item.href}
-                          className="block py-2 text-gray-300 hover:text-white"
+                          className="block py-3 px-2 text-gray-300 hover:text-white min-h-[44px] text-sm"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {item.name}
@@ -612,19 +608,19 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setActiveDropdown(activeDropdown === 'solutions-mobile' ? null : 'solutions-mobile')}
-                className="text-white text-left py-2 flex justify-between items-center"
+                className="text-white text-left py-3 px-2 flex justify-between items-center min-h-[44px] text-base"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Solutions
-                <span>{activeDropdown === 'solutions-mobile' ? '−' : '+'}</span>
+                <span className="text-xl">{activeDropdown === 'solutions-mobile' ? '−' : '+'}</span>
               </button>
               {activeDropdown === 'solutions-mobile' && (
-                <div className="pl-4 space-y-2">
+                <div className="pl-4 space-y-1">
                   {solutionsMenu.map((item, index) => (
                     <a
                       key={index}
                       href={item.href || `/solutions/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="block py-2 text-gray-300 hover:text-white"
+                      className="block py-3 px-2 text-gray-300 hover:text-white min-h-[44px] text-sm"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
@@ -636,19 +632,19 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setActiveDropdown(activeDropdown === 'resources-mobile' ? null : 'resources-mobile')}
-                className="text-white text-left py-2 flex justify-between items-center"
+                className="text-white text-left py-3 px-2 flex justify-between items-center min-h-[44px] text-base"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Resources
-                <span>{activeDropdown === 'resources-mobile' ? '−' : '+'}</span>
+                <span className="text-xl">{activeDropdown === 'resources-mobile' ? '−' : '+'}</span>
               </button>
               {activeDropdown === 'resources-mobile' && (
-                <div className="pl-4 space-y-2">
+                <div className="pl-4 space-y-1">
                   {resourcesMenu.map((item, index) => (
                     <a
                       key={index}
                       href={item.href}
-                      className="block py-2 text-gray-300 hover:text-white"
+                      className="block py-3 px-2 text-gray-300 hover:text-white min-h-[44px] text-sm"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
@@ -660,19 +656,19 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setActiveDropdown(activeDropdown === 'pricing-mobile' ? null : 'pricing-mobile')}
-                className="text-white text-left py-2 flex justify-between items-center"
+                className="text-white text-left py-3 px-2 flex justify-between items-center min-h-[44px] text-base"
                 style={{ fontFamily: 'var(--font-inter), sans-serif' }}
               >
                 Pricing
-                <span>{activeDropdown === 'pricing-mobile' ? '−' : '+'}</span>
+                <span className="text-xl">{activeDropdown === 'pricing-mobile' ? '−' : '+'}</span>
               </button>
               {activeDropdown === 'pricing-mobile' && (
-                <div className="pl-4 space-y-2">
+                <div className="pl-4 space-y-1">
                   {pricingMenu.map((item, index) => (
                     <a
                       key={index}
                       href={item.href}
-                      className="block py-2 text-gray-300 hover:text-white"
+                      className="block py-3 px-2 text-gray-300 hover:text-white min-h-[44px] text-sm"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
@@ -681,10 +677,10 @@ export default function Header() {
                 </div>
               )}
 
-              <div className="flex flex-col gap-3 pt-2 border-t border-white/20">
+              <div className="flex flex-col gap-3 pt-4 border-t border-white/20">
                 <a 
                   href="/login" 
-                  className="text-white py-2"
+                  className="text-white py-3 px-2 text-center min-h-[44px] flex items-center justify-center text-base"
                   style={{ fontFamily: 'var(--font-inter), sans-serif' }}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -692,7 +688,7 @@ export default function Header() {
                 </a>
                 <a 
                   href="/contact" 
-                  className="px-4 py-2 bg-gray-300 text-gray-900 text-center font-semibold"
+                  className="px-4 py-3 bg-gray-300 text-gray-900 text-center font-semibold min-h-[44px] flex items-center justify-center text-base"
                   style={{ 
                     fontFamily: 'var(--font-inter), sans-serif',
                     borderRadius: '9999px'
@@ -703,7 +699,7 @@ export default function Header() {
                 </a>
                 <a 
                   href="/signup" 
-                  className="px-4 py-2 bg-gray-900 text-white text-center font-semibold"
+                  className="px-4 py-3 bg-gray-900 text-white text-center font-semibold min-h-[44px] flex items-center justify-center text-base"
                   style={{ 
                     fontFamily: 'var(--font-inter), sans-serif',
                     borderRadius: '9999px'

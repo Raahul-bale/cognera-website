@@ -119,7 +119,7 @@ export default function DemoForm() {
                       key={size}
                       type="button"
                       onClick={() => handleCompanySizeClick(size)}
-                      className={`w-full px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 ${
+                      className={`w-full px-3 sm:px-4 md:px-6 py-3 sm:py-2.5 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 min-h-[44px] flex items-center justify-center ${
                         formData.companySize === size
                           ? 'bg-[#7440FA] text-white'
                           : 'bg-white text-gray-800 hover:bg-gray-100 border border-gray-300'

@@ -81,6 +81,40 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Ensure touch targets are adequate */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability on mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Better spacing on mobile */
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Improve touch interactions */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile devices */
+  button, a {
+    -webkit-tap-highlight-color: rgba(116, 64, 250, 0.2);
+  }
+}
+
 @media (min-width: 641px) and (max-width: 1023px) {
   .matrix-grid-container {
     opacity: 1;

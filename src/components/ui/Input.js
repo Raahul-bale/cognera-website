@@ -38,18 +38,19 @@ export default function Input({
           onChange={onChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full px-4 py-3 rounded-lg border ${
+          className={`w-full px-4 py-3 sm:py-3 rounded-lg border text-base ${
             isLight 
               ? `bg-white ${isFocused ? 'border-[#7440FA]' : 'border-gray-300'} text-gray-800 placeholder-gray-400`
               : `bg-[#1a1a1a] ${isFocused ? 'border-[#7440FA]' : 'border-gray-700'} text-white placeholder-gray-500`
-          } focus:outline-none focus:ring-2 focus:ring-[#7440FA] transition-all`}
+          } focus:outline-none focus:ring-2 focus:ring-[#7440FA] transition-all min-h-[44px]`}
           {...props}
         />
         {showPasswordToggle && type === 'password' && (
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-sm hover:text-[#7440FA] transition-colors ${isLight ? 'text-gray-600' : 'text-white'}`}
+            className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-sm hover:text-[#7440FA] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center ${isLight ? 'text-gray-600' : 'text-white'}`}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? 'HIDE' : 'SHOW'}
           </button>
