@@ -21,7 +21,7 @@ export default function ProblemSection() {
               Analytics show what happened. Cognera reveals why it happened.
             </h2>
             <p className="text-lg sm:text-xl text-white/80 mb-6 leading-relaxed" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-              Traditional analytics stop at clicks, visits, and events. They don't explain human behavior or the drivers behind user actions.
+              Traditional analytics stop at clicks, visits, and events. They don&apos;t explain human behavior or the drivers behind user actions.
             </p>
           </div>
         </div>
