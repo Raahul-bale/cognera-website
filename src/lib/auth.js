@@ -1,37 +1,63 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import fs from 'fs'
-import path from 'path'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production'
-const USERS_FILE = path.join(process.cwd(), 'data', 'users.json')
+const USERS_KEY = 'users'
 
-// Ensure data directory exists
-function ensureDataDir() {
-  const dataDir = path.join(process.cwd(), 'data')
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true })
+// Initialize KV client (works with Vercel KV or falls back to in-memory for local dev)
+let kvClient = null
+let inMemoryStore = null
+
+async function getKvClient() {
+  // Check if KV environment variables are set (Vercel KV)
+  if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
+    if (!kvClient) {
+      // Dynamically import @vercel/kv only when KV is available
+      const { kv } = await import('@vercel/kv')
+      kvClient = kv
+    }
+    return kvClient
   }
-}
-
-// Load users from file
-function loadUsers() {
-  ensureDataDir()
-  if (fs.existsSync(USERS_FILE)) {
-    try {
-      const data = fs.readFileSync(USERS_FILE, 'utf8')
-      return JSON.parse(data)
-    } catch (error) {
-      return []
+  
+  // Fallback to in-memory storage for local development
+  if (!inMemoryStore) {
+    inMemoryStore = new Map()
+  }
+  return {
+    get: async (key) => {
+      const value = inMemoryStore.get(key)
+      return value ? JSON.parse(value) : null
+    },
+    set: async (key, value) => {
+      inMemoryStore.set(key, JSON.stringify(value))
+    },
+    del: async (key) => {
+      inMemoryStore.delete(key)
     }
   }
-  return []
 }
 
-// Save users to file
-function saveUsers(users) {
-  ensureDataDir()
-  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2))
+// Load users from KV
+async function loadUsers() {
+  try {
+    const client = await getKvClient()
+    const users = await client.get(USERS_KEY)
+    return users || []
+  } catch (error) {
+    console.error('Error loading users:', error)
+    return []
+  }
+}
+
+// Save users to KV
+async function saveUsers(users) {
+  try {
+    const client = await getKvClient()
+    await client.set(USERS_KEY, users)
+  } catch (error) {
+    console.error('Error saving users:', error)
+    throw new Error('Failed to save users')
+  }
 }
 
 export async function hashPassword(password) {
@@ -61,7 +87,7 @@ export function verifyToken(token) {
 export async function createUser(userData) {
   const { email, password, fullName } = userData
   
-  const users = loadUsers()
+  const users = await loadUsers()
   
   // Check if user already exists
   const existingUser = users.find(u => u.email === email)
@@ -83,7 +109,7 @@ export async function createUser(userData) {
   }
 
   users.push(newUser)
-  saveUsers(users)
+  await saveUsers(users)
 
   return {
     id: newUser.id,
@@ -93,7 +119,7 @@ export async function createUser(userData) {
 }
 
 export async function authenticateUser(email, password) {
-  const users = loadUsers()
+  const users = await loadUsers()
   const user = users.find(u => u.email === email)
   
   if (!user) {
@@ -156,7 +182,7 @@ export function validateEmail(email) {
 export async function createOrFindOAuthUser(userData) {
   const { email, fullName, provider, providerId, picture } = userData
   
-  const users = loadUsers()
+  const users = await loadUsers()
   
   // Check if user already exists by email or provider ID
   let existingUser = users.find(u => 
@@ -168,7 +194,7 @@ export async function createOrFindOAuthUser(userData) {
     // Update user info if needed
     existingUser.fullName = fullName || existingUser.fullName
     existingUser.picture = picture || existingUser.picture
-    saveUsers(users)
+    await saveUsers(users)
     
     return {
       id: existingUser.id,
@@ -189,7 +215,7 @@ export async function createOrFindOAuthUser(userData) {
   }
 
   users.push(newUser)
-  saveUsers(users)
+  await saveUsers(users)
 
   return {
     id: newUser.id,

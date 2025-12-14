@@ -102,67 +102,99 @@ export default function Header() {
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
+      ),
+      'ai-behaviour-engine': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      ),
+      'behaviour-insight-layer': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      'product-behaviour-analytics': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+      'session-flow-analytics': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+      ),
+      'attention-distraction-mapping': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+      ),
+      'behaviour-cohorts': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      ),
+      'insight-driven-recommendations': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        </svg>
+      ),
+      'experience-optimization-signals': (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
       )
     }
     return icons[iconName] || null
   }
 
   const platformMenu = {
-    AI: [
-      { name: 'AI Agents', description: 'Sense, decide, and act faster than ever before', icon: 'ai-agents', href: '/platform/ai-agents' },
-      { name: 'AI Visibility', description: 'See how your brand shows up in AI search', icon: 'ai-visibility', href: '/platform/ai-visibility' },
-      { name: 'AI Feedback', description: 'Distill what your customers say they want', icon: 'ai-feedback', href: '/platform/ai-feedback' },
-      { name: 'Cognera MCP', description: 'Insights from the comfort of your favorite AI tool', icon: 'cognera-mcp', href: '/platform/cognera-mcp' }
+    'AI / Intelligence': [
+      { name: 'AI Behaviour Engine', description: 'Behaviour processing layer', icon: 'ai-behaviour-engine', href: '/platform/ai-behaviour-engine' },
+      { name: 'Behaviour Insight Layer', description: 'Behaviour interpretation layer', icon: 'behaviour-insight-layer', href: '/platform/behaviour-insight-layer' },
+      { name: 'Cognera MCP', description: 'Core intelligence framework', icon: 'cognera-mcp', href: '/platform/cognera-mcp' }
     ],
-    INSIGHTS: [
-      { name: 'Product Analytics', description: 'Understand the full user journey', icon: 'product-analytics', href: '/platform/product-analytics' },
-      { name: 'Marketing Analytics', description: 'Get the metrics you need with one line of code', icon: 'marketing-analytics', href: '/platform/marketing-analytics' },
-      { name: 'Session Replay', description: 'Visualize sessions based on events in your product', icon: 'session-replay', href: '/platform/session-replay' },
-      { name: 'Heatmaps', description: 'Visualize clicks, scrolls, and engagement', icon: 'heatmaps', href: '/platform/heatmaps' }
+    'Insights': [
+      { name: 'Product Behaviour Analytics', description: 'Feature usage behaviour', icon: 'product-behaviour-analytics', href: '/platform/product-behaviour-analytics' },
+      { name: 'Session Flow Analytics', description: 'Session-level behaviour flow', icon: 'session-flow-analytics', href: '/platform/session-flow-analytics' },
+      { name: 'Attention & Distraction Mapping', description: 'Focus & distraction patterns', icon: 'attention-distraction-mapping', href: '/platform/attention-distraction-mapping' },
+      { name: 'Behaviour Cohorts', description: 'Behaviour-based grouping', icon: 'behaviour-cohorts', href: '/platform/behaviour-cohorts' }
     ],
-    ACTION: [
-      { name: 'Guides and Surveys', description: 'Guide your users and collect feedback', icon: 'guides-surveys', href: '/platform/guides-surveys' },
-      { name: 'Feature Experimentation', description: 'Innovate with personalized product experiences', icon: 'feature-experimentation', href: '/platform/feature-experimentation' },
-      { name: 'Web Experimentation', description: 'Drive conversion with A/B testing powered by data', icon: 'web-experimentation', href: '/platform/web-experimentation' },
-      { name: 'Feature Management', description: 'Build fast, target easily, and learn as you ship', icon: 'feature-management', href: '/platform/feature-management' },
-      { name: 'Activation', description: 'Unite data across teams', icon: 'activation', href: '/platform/activation' }
+    'Action (Light)': [
+      { name: 'Insight-Driven Recommendations', description: 'Behaviour-based signals', icon: 'insight-driven-recommendations', href: '/platform/insight-driven-recommendations' },
+      { name: 'Experience Optimization Signals', description: 'Experience guidance indicators', icon: 'experience-optimization-signals', href: '/platform/experience-optimization-signals' }
     ],
-    DATA: [
-      { name: 'Warehouse-native Cognera', description: 'Unlock insights from your data warehouse', icon: 'warehouse-native', href: '/platform/warehouse-native' },
-      { name: 'Data Governance', description: 'Complete data you can trust', icon: 'data-governance', href: '/platform/data-governance' },
-      { name: 'Security & Privacy', description: 'Keep your data secure and compliant', icon: 'security-privacy', href: '/platform/security-privacy' },
-      { name: 'Integrations', description: 'Connect Cognera to hundreds of partners', icon: 'integrations', href: '/platform/integrations' }
+    'Data & Trust': [
+      { name: 'Data Governance', description: 'Responsible data controls', icon: 'data-governance', href: '/platform/data-governance' },
+      { name: 'Security & Privacy', description: 'Privacy-first protection', icon: 'security-privacy', href: '/platform/security-privacy' },
+      { name: 'Integrations', description: 'System connectivity', icon: 'integrations', href: '/platform/integrations' }
     ]
   }
 
   const solutionsMenu = [
-    { name: 'For Product Teams', description: 'Build better products with data-driven insights' },
-    { name: 'For Marketing Teams', description: 'Optimize campaigns and drive growth' },
-    { name: 'For Engineering Teams', description: 'Ship faster with confidence' },
-    { name: 'For Executives', description: 'Make strategic decisions with real-time data' }
+    { name: 'For Product Teams', description: 'Build better products using real behavioural insights.' },
+    { name: 'For Marketing Teams', description: 'Understand engagement quality and attention patterns without tracking personal data.' },
+    { name: 'For Engineering Teams', description: 'Validate product decisions using real-world behaviour signals.' },
+    { name: 'For Executives', description: 'Monitor engagement health and behavioural risk at a strategic level.' },
+    { name: 'For Data & Analytics Teams', description: 'Augment analytics with privacy-safe behavioural intelligence.' },
+    { name: 'For Privacy & Compliance Teams', description: 'Adopt behavioural analytics without violating user trust or regulations.' }
   ]
 
   const resourcesMenu = [
-    { name: 'Documentation', description: 'Complete guides and API references' },
-    { name: 'Blog', description: 'Latest insights and product updates' },
-    { name: 'Case Studies', description: 'See how customers succeed with Cognera' },
-    { name: 'Webinars', description: 'Learn from experts and best practices' },
-    { name: 'Community', description: 'Connect with other users and developers' },
-    { name: 'Support', description: 'Get help when you need it' }
+    { name: 'Developer Docs', description: 'SDK & API guides', href: '/docs' },
+    { name: 'Support & Documentation', description: 'Help & usage support', href: '/support' },
+    { name: 'Resources', description: 'Blogs, updates, insights', href: '/resources' }
   ]
 
   const pricingMenu = [
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'Customer Help Center', href: '/help' },
-    { name: 'Community', href: '/community' },
-    { name: 'Developer Docs', href: '/docs' }
+    { name: 'Pricing', description: 'Contact sales / custom plans', href: '/pricing' }
   ]
 
   const companyMenu = [
-    { name: 'About Us', href: '/about' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Press & News', href: '/press' },
-    { name: 'Investor Relations', href: '/investors' }
+    { name: 'Contact Us', href: '/contact' },
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
+    { name: 'Security & Compliance', href: '/security' }
   ]
 
   return (
@@ -191,11 +223,26 @@ export default function Header() {
             <div className="flex justify-between items-center py-3 px-4 sm:px-6 relative" style={{ overflow: 'visible' }}>
               {/* Logo */}
               <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 bg-[#3399CC] rounded-full mr-2 flex items-center justify-center text-white font-bold text-lg">
-                  C
-                </div>
-                <h1 className="text-lg sm:text-xl text-white font-semibold" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                <img 
+                  src="/img/android-chrome-512x512.png" 
+                  alt="Cognera Logo" 
+                  className="w-16 h-16 mr-2"
+                  style={{ objectFit: 'contain' }}
+                />
+                <h1 className="text-xl sm:text-2xl text-white font-semibold relative inline-block" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                   Cognera
+                  <sup 
+                    style={{ 
+                      fontSize: '0.35em',
+                      verticalAlign: 'super',
+                      lineHeight: 0,
+                      position: 'relative',
+                      top: '-0.2em',
+                      marginLeft: '2px'
+                    }}
+                  >
+                    TM
+                  </sup>
                 </h1>
               </a>
               
@@ -380,15 +427,17 @@ export default function Header() {
                             {resourcesMenu.map((item, index) => (
                               <a
                                 key={index}
-                                href={`/resources/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                href={item.href || `/resources/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                                 className="block py-3 px-4 rounded hover:bg-white/10 transition-colors group border border-transparent hover:border-white/20"
                               >
                                 <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                                   {item.name}
                                 </p>
-                                <p className="text-xs text-gray-300 mt-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                                  {item.description}
-                                </p>
+                                {item.description && (
+                                  <p className="text-xs text-gray-300 mt-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                                    {item.description}
+                                  </p>
+                                )}
                               </a>
                             ))}
                           </div>
@@ -449,6 +498,11 @@ export default function Header() {
                                 <p className="font-semibold text-white text-sm group-hover:text-[#7440FA] transition-colors" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                                   {item.name}
                                 </p>
+                                {item.description && (
+                                  <p className="text-xs text-gray-300 mt-1" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                                    {item.description}
+                                  </p>
+                                )}
                               </a>
                             ))}
                           </div>
@@ -569,7 +623,7 @@ export default function Header() {
                   {solutionsMenu.map((item, index) => (
                     <a
                       key={index}
-                      href={item.href}
+                      href={item.href || `/solutions/${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                       className="block py-2 text-gray-300 hover:text-white"
                       onClick={() => setIsMenuOpen(false)}
                     >

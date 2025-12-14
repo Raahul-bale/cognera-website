@@ -82,10 +82,10 @@ export default function Footer() {
       {/* Large Brand Name with Gradient - Behind Footer Content */}
       <div 
         className="absolute inset-0 flex items-end justify-center pointer-events-none"
-        style={{ zIndex: 1, paddingBottom: '8rem', bottom: 0, overflow: 'visible' }}
+        style={{ zIndex: 1, paddingBottom: '2rem', bottom: 0, overflow: 'visible' }}
       >
         <h1 
-          className="text-8xl sm:text-9xl lg:text-[12rem] xl:text-[14rem] font-bold leading-none text-center"
+          className="text-8xl sm:text-9xl lg:text-[12rem] xl:text-[14rem] font-bold leading-none text-center relative inline-block"
           style={{ 
             fontFamily: 'var(--font-inter), sans-serif',
             background: 'linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.4))',
@@ -101,6 +101,21 @@ export default function Footer() {
           }}
         >
           Cognera
+          <sup 
+            style={{ 
+              fontSize: '0.25em',
+              verticalAlign: 'super',
+              lineHeight: 0,
+              position: 'relative',
+              top: '-0.2em',
+              background: 'linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.4))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}
+          >
+            TM
+          </sup>
         </h1>
       </div>
 
@@ -165,43 +180,56 @@ export default function Footer() {
 
           {/* Right Side - Navigation Links */}
           <div className="flex flex-col gap-4">
-            {/* Legal Links */}
-            <div className="flex flex-wrap gap-4 sm:gap-6">
-              <a 
-                href="/terms" 
-                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base"
-                style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-              >
-                Terms of Service
-              </a>
-              <a 
-                href="/privacy" 
-                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base"
-                style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-              >
-                Privacy Notice
-              </a>
-              <a 
-                href="/acceptable-use" 
-                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base"
-                style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-              >
-                Acceptable Use Policy
-              </a>
-              <a 
-                href="/legal" 
-                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base"
-                style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-              >
-                Legal
-              </a>
-              <a 
-                href="/cookie-settings" 
-                className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base"
-                style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-              >
-                Cookie Settings
-              </a>
+            {/* Company Links */}
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-1">
+                <a 
+                  href="/contact" 
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                >
+                  Contact Us
+                </a>
+                <p className="text-gray-400 text-xs" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                  Get in touch
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <a 
+                  href="/privacy" 
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                >
+                  Privacy Policy
+                </a>
+                <p className="text-gray-400 text-xs" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                  Data & privacy terms
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <a 
+                  href="/terms" 
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                >
+                  Terms of Service
+                </a>
+                <p className="text-gray-400 text-xs" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                  Usage terms
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <a 
+                  href="/security" 
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold"
+                  style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                >
+                  Security & Compliance
+                </a>
+                <p className="text-gray-400 text-xs" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                  Security & compliance overview
+                </p>
+              </div>
             </div>
 
             {/* Language Options */}
@@ -267,7 +295,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="text-center mb-32 sm:mb-40 lg:mb-48 xl:mb-56">
+        <div className="text-center mb-24 sm:mb-32 lg:mb-40 xl:mb-48">
           <p className="text-gray-400 text-xs sm:text-sm" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
             &copy; 2025 Cognera Data Labs, Inc. All rights reserved. Cognera is a registered trademark of Cognera Data Labs, Inc.
           </p>
