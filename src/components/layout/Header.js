@@ -254,6 +254,19 @@ export default function Header() {
                 />
                 <h1 className="text-lg sm:text-xl md:text-2xl text-white font-semibold relative inline-block -ml-1" style={{ fontFamily: 'var(--font-inter), sans-serif', marginLeft: '-4px' }}>
                   Cognera
+                  <sup 
+                    style={{ 
+                      fontSize: '0.25em',
+                      verticalAlign: 'super',
+                      lineHeight: 0,
+                      position: 'relative',
+                      top: '-0.3em',
+                      marginLeft: '1px',
+                      fontWeight: 'normal'
+                    }}
+                  >
+                    TM
+                  </sup>
                 </h1>
               </a>
               
