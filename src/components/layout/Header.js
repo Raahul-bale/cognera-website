@@ -245,28 +245,15 @@ export default function Header() {
             >
             <div className="flex justify-between items-center py-3 px-4 sm:px-6 relative" style={{ overflow: 'visible' }}>
               {/* Logo */}
-              <a href="/" className="flex items-center hover:opacity-80 transition-opacity min-h-[44px] min-w-[44px]">
+              <a href="/" className="flex items-center gap-0 hover:opacity-80 transition-opacity min-h-[44px] min-w-[44px]">
                 <img 
                   src="/img/android-chrome-512x512.png" 
-                  alt="Cognera Data Labs Logo" 
-                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mr-3"
-                  style={{ objectFit: 'contain' }}
+                  alt="Cognera Logo" 
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16"
+                  style={{ objectFit: 'contain', marginRight: 0 }}
                 />
-                <h1 className="text-lg sm:text-xl md:text-2xl text-white font-semibold relative inline-block" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
-                  Cognera Data Labs
-                  <sup 
-                    style={{ 
-                      fontSize: '0.25em',
-                      verticalAlign: 'super',
-                      lineHeight: 0,
-                      position: 'relative',
-                      top: '-0.3em',
-                      marginLeft: '1px',
-                      fontWeight: 'normal'
-                    }}
-                  >
-                    TM
-                  </sup>
+                <h1 className="text-lg sm:text-xl md:text-2xl text-white font-semibold relative inline-block -ml-1" style={{ fontFamily: 'var(--font-inter), sans-serif', marginLeft: '-4px' }}>
+                  Cognera
                 </h1>
               </a>
               
