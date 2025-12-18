@@ -155,6 +155,18 @@ export default function Footer() {
               </div>
               <div className="flex flex-col gap-1">
                 <a 
+                  href="/support" 
+                  className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold py-2 min-h-[44px] flex items-center"
+                  style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                >
+                  Support
+                </a>
+                <p className="text-gray-400 text-xs" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                  Get help & assistance
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <a 
                   href="/privacy" 
                   className="text-white hover:text-[#7440FA] transition-colors text-sm sm:text-base font-semibold py-2 min-h-[44px] flex items-center"
                   style={{ fontFamily: 'var(--font-inter), sans-serif' }}
@@ -276,7 +288,7 @@ export default function Footer() {
             backgroundClip: 'text'
           }}
         >
-          Cognera Data Labs
+          Cognera
           <sup 
             style={{ 
               fontSize: '0.25em',
