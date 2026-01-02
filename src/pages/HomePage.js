@@ -4,8 +4,6 @@ import SolutionSection from '@/components/sections/SolutionSection'
 import FeatureGrid from '@/components/sections/FeatureGrid'
 import HowItWorks from '@/components/sections/HowItWorks'
 import ValueProposition from '@/components/sections/ValueProposition'
-import DemoForm from '@/components/sections/DemoForm'
-import FinalCTA from '@/components/sections/FinalCTA'
 
 export default function HomePage() {
   return (
@@ -49,13 +47,7 @@ export default function HomePage() {
           />
         </div>
         
-        {/* Demo Form */}
-        <DemoForm />
-        
-        {/* Final CTA */}
-        <div className="py-4 sm:py-6">
-          <FinalCTA />
-        </div>
+
       </div>
     </div>
   )
